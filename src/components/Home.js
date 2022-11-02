@@ -4,12 +4,15 @@ import Main from "./Main";
 import Rightside from "./Rightside";
 import React from "react";
 import Header from "./Header";
+import { Navigate } from "react-router";
+import { connect } from "react-redux";
 
 
 const Home = (props) => {
   return (
     <><Header />
     <Container>
+    {!props.user && <Navigate to="/" />}
       <Section>
         <h5>
           <a>Hiring in a hurry? - </a>
@@ -82,4 +85,10 @@ const Layout = styled.div`
   }
 `;
 
-export default Home;
+const mapStateToPorps = (state) => {
+  return {
+    user: state.userState.user,
+  }
+}
+
+export default connect(mapStateToPorps)(Home);
