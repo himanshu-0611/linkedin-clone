@@ -6,3 +6,7 @@ const firebaseConfig = {
   messagingSenderId: "846195710855",
   appId: "1:846195710855:web:85a5e226077fa3689e9122"
 };
+
+date in post dp
+
+loading animation after posting
