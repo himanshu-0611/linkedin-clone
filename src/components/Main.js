@@ -2,42 +2,36 @@ import { useState } from "react";
 import styled from "styled-components";
 import React from "react";
 import PostModal from "./PostModal";
-import { connect } from "react-redux";
 
 const Main = (props) => {
   const [showModal, setShowModal] = useState("close");
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (e.target !== e.currentTarget) {
+    if(e.target !== e.currentTarget) {
       return;
     }
 
-    switch (showModal) {
+    switch(showModal) {
       case "open":
         setShowModal("close");
         break;
       case "close":
         setShowModal("open");
-        break;
+      break;
       default:
         setShowModal("clsoe");
-        break;
+      break;
     }
-  };
+  }
 
   return (
     <Container>
       <ShareBox>
+        Share
         <div>
-          {props.user && props.user.photoURL ? (
-            <img src={props.user.photoURL} />
-          ) : (
-            <img src="/images/user.svg" alt="" />
-          )}
-          <button onClick={handleClick} disabled={props.loading ? true : false}>
-            Start a Post
-          </button>
+          <img src="/images/user.svg" alt="" />
+          <button onClick={handleClick}>Start a Post</button>
         </div>
         <div>
           <button>
@@ -73,10 +67,7 @@ const Main = (props) => {
           </button>
         </div>
       </ShareBox>
-      <Content>
-        {props.loading && (
-          <img src="https://cdn-icons-png.flaticon.com/512/889/889843.png" />
-        )}
+      <div>
         <Article>
           <SharedActor>
             <a>
@@ -94,27 +85,20 @@ const Main = (props) => {
               />
             </button>
           </SharedActor>
-          <Description>Description</Description>
+          <Description>
+            Description
+          </Description>
           <SharedImg>
             <a>
-              <img
-                src="https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg?cs=srgb&dl=pexels-pixabay-210243.jpg&fm=jpg"
-                alt=""
-              />
+              <img src="https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg?cs=srgb&dl=pexels-pixabay-210243.jpg&fm=jpg" alt="" />
             </a>
           </SharedImg>
           <SocialCounts>
             <li>
               <button>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/456/456115.png"
-                  alt=""
-                />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/1629/1629881.png"
-                  alt=""
-                />
-
+                <img src="https://cdn-icons-png.flaticon.com/128/456/456115.png" alt="" />
+                <img src="https://cdn-icons-png.flaticon.com/128/1629/1629881.png" alt="" />
+                
                 <span>75</span>
               </button>
             </li>
@@ -124,40 +108,30 @@ const Main = (props) => {
           </SocialCounts>
           <SocialActions>
             <button>
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/456/456115.png"
-                alt=""
-              />
+              <img src="https://cdn-icons-png.flaticon.com/128/456/456115.png" alt="" />
               <span>Like</span>
             </button>
 
             <button>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2593/2593491.png"
-                alt=""
-              />
+              <img src="https://cdn-icons-png.flaticon.com/512/2593/2593491.png" alt="" />
               <span>Comment</span>
             </button>
 
             <button>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/929/929468.png"
-                alt=""
-              />
+              <img src="https://cdn-icons-png.flaticon.com/512/929/929468.png" alt="" />
               <span>Share</span>
             </button>
 
             <button>
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2161/2161491.png"
-                alt=""
-              />
+              <img src="https://cdn-icons-png.flaticon.com/512/2161/2161491.png" alt="" />
               <span>Send</span>
             </button>
           </SocialActions>
         </Article>
-      </Content>
-      <PostModal showModal={showModal} handleClick={handleClick}></PostModal>
+      </div>
+      <PostModal showModal={showModal} handleClick={handleClick}>
+
+      </PostModal>
     </Container>
   );
 };
@@ -248,7 +222,7 @@ const SharedActor = styled.div`
   margin-bottom: 8px;
   align-items: center;
   display: flex;
-
+  
   a {
     margin-right: 12px;
     flex-grow: 1;
@@ -275,12 +249,12 @@ const SharedActor = styled.div`
         &:first-child {
           font-size: 14px;
           font-weight: 700;
-          color: rgba(0, 0, 0, 1);
+          color: rgba(0,0,0,1);
         }
 
-        &:nth-child(n + 1) {
+        &:nth-child(n+1) {
           font-size: 12px;
-          color: rgba(0, 0, 0, 0.6);
+          color: rgba(0,0,0,0.6);
         }
       }
     }
@@ -303,7 +277,7 @@ const SharedActor = styled.div`
 const Description = styled.div`
   padding: 0 16px;
   overflow: hidden;
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba( 0,0,0,0.9);
   font-size: 14px;
   text-align: left;
 `;
@@ -346,7 +320,7 @@ const SocialCounts = styled.ul`
   }
 `;
 
-const SocialActions = styled.div`
+const SocialActions = styled.div `
   align-items: center;
   display: flex;
   justify-content: flex-start;
@@ -364,7 +338,7 @@ const SocialActions = styled.div`
       width: 15px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px){
       span {
         margin-left: 8px;
       }
@@ -372,21 +346,4 @@ const SocialActions = styled.div`
   }
 `;
 
-const Content = styled.div`
-  text-align: center;
-
-  & > img {
-    width: 30px;
-  }
-`;
-
-const mapStateToProps = (state) => {
-  return {
-    loading: state.articleState.loading,
-    user: state.userState.user,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapDispatchToProps, mapStateToProps)(Main);
+export default Main;
