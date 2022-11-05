@@ -1,16 +1,66 @@
 import { useState } from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
+import { connect } from "react-redux";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
+import { postArticleAPI } from "../actions";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
+  const [shareImage, setShareImage] = useState("");
+  const [videoLink, setVideoLink] = useState("");
+  const [assetArea, setAssetArea] = useState("");
+
+  const handleChange = (e) => {
+    const image = e.target.files[0];
+
+    if (image === "" || image === undefined) {
+      alert(`not an image, the file is a ${typeof image}`);
+      return;
+    }
+    setShareImage(image);
+  };
+
+  const switchAssetArea = (area) => {
+    setShareImage("");
+    setVideoLink("");
+    setAssetArea(area);
+  };
+
+  const postArticle = (e) => {
+    console.log("start");
+    e.preventDefault();
+    if (e.target !== e.currentTarget) {
+      console.log("insideif");
+      return;
+    }
+
+    const payload = {
+      image: shareImage,
+      video: videoLink,
+      user: props.user,
+      description: editorText,
+      timestamp: firebase.firestore.Timestamp.now(),
+    };
+
+    props.postArticle(payload);
+    reset(e);
+  };
 
   const reset = (e) => {
     setEditorText("");
+    setShareImage("");
+    setVideoLink("");
+    setAssetArea("");
     props.handleClick(e);
   };
+
   return (
     <>
-      { props.showModal === 'open' &&
+      {props.showModal === "open" && (
         <Container>
           <Content>
             <Header>
@@ -24,8 +74,12 @@ const PostModal = (props) => {
             </Header>
             <SharedContent>
               <UserInfo>
-                <img src="/images/user.svg" alt="" />
-                <span>Name</span>
+                {props.user.photoURL ? (
+                  <img src={props.user.photoURL} referrerPolicy="no-referrer" />
+                ) : (
+                  <img src="/images/user.svg" alt="" />
+                )}
+                <span>{props.user.displayName}</span>
               </UserInfo>
 
               <Editor>
@@ -34,18 +88,50 @@ const PostModal = (props) => {
                   onChange={(e) => setEditorText(e.target.value)}
                   placeholder="What do you want to talk about?"
                   autoFocus={true}
-                ></textarea>
+                />
+                {assetArea === "image" ? (
+                  <UploadImage>
+                    <input
+                      type="file"
+                      accept="image/gif, image/jpeg, image/png"
+                      name="image"
+                      id="file"
+                      style={{ display: "none" }}
+                      onChange={handleChange}
+                    />
+                    <p>
+                      <label htmlFor="file">Select an image to share</label>
+                    </p>
+                    {shareImage && (
+                      <img src={URL.createObjectURL(shareImage)} />
+                    )}
+                  </UploadImage>
+                ) : (
+                  assetArea === "media" && (
+                    <>
+                      <input
+                        type="text"
+                        placeholder="Place input a video link"
+                        video={videoLink}
+                        onChange={(e) => setVideoLink(e.target.value)}
+                      />
+                      {videoLink && (
+                        <ReactPlayer width={"100%"} url={videoLink} />
+                      )}
+                    </>
+                  )
+                )}
               </Editor>
             </SharedContent>
             <ShareCreation>
               <AttachAssets>
-                <AssetButton>
+                <AssetButton onClick={() => switchAssetArea("image")}>
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/1375/1375106.png"
                     alt=""
                   />
                 </AssetButton>
-                <AssetButton>
+                <AssetButton onClick={() => switchAssetArea("media")}>
                   <img
                     src="https://cdn-icons-png.flaticon.com/128/3074/3074767.png"
                     alt=""
@@ -63,11 +149,16 @@ const PostModal = (props) => {
                 </AssetButton>
               </ShareComment>
 
-              <PostButton disabled={!editorText ? true : false}>Post</PostButton>
+              <PostButton
+                disabled={!editorText ? true : false}
+                onClick={(event) => postArticle(event)}
+              >
+                Post
+              </PostButton>
             </ShareCreation>
           </Content>
         </Container>
-      }
+      )}
     </>
   );
 };
@@ -200,9 +291,11 @@ const PostButton = styled.button`
   padding-right: 16px;
   /* background: ${(props) => (props.disabled ? "rgba(0,0,0,0.8)" : "purple")};
   color: ${(props) => (props.disabled ? "rgba(1,1,1,0.2" : "white")}; */
-
+  background: purple;
+  color: white;
   &:hover {
-    /* background: ${(props) => (props.disabled ? "rgba(0,0,0,0.08)" : "cyan")} */
+    /* background: ${(props) =>
+      props.disabled ? "rgba(0,0,0,0.08)" : "cyan"} */
   }
 `;
 
@@ -211,7 +304,7 @@ const Editor = styled.div`
 
   textarea {
     width: 100%;
-    min-height: 100px;
+    min-height: 20px;
     resize: none;
     /* border: 2px solid black; */
     /* border-radius: 5px; */
@@ -225,4 +318,22 @@ const Editor = styled.div`
   }
 `;
 
-export default PostModal;
+const UploadImage = styled.div`
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+`;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  postArticle: (payload) => dispatch(postArticleAPI(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
