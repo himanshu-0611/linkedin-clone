@@ -60,7 +60,11 @@ const Header = (props) => {
             <User>
               <a>
                 {props.user && props.user.photoURL ? (
-                  <img src={props.user.photoURL} alt="" referrerPolicy="no-referrer"/>
+                  <img
+                    src={props.user.photoURL}
+                    alt=""
+                    referrerPolicy="no-referrer"
+                  />
                 ) : (
                   <img src="/images/user.svg" alt="" />
                 )}
@@ -70,8 +74,11 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut onClick={() => props.signOut()}>
-                <a>Sign Out</a>
+              <SignOut >
+                <ul>
+                  <li><a>Profile</a></li>
+                  <li><a onClick={() => props.signOut()}>Sign Out</a></li>
+                </ul>
               </SignOut>
             </User>
 
@@ -224,7 +231,7 @@ const NavList = styled.li`
 `;
 
 const SignOut = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 45px;
   background: white;
   border-radius: 0 0 5px 5px;
@@ -232,7 +239,14 @@ const SignOut = styled.div`
   height: 40px;
   font-size: 16px;
   transition-duration: 167ms;
-  text-align: center;
+  text-align: center; */
+  position: absolute;
+  top: 45px;
+  border-radius: 0 0 5px 5px;
+  background: white;
+  /* width: 150px; */
+  /* height: 40px; */
+  font-size: 16px;
   display: none;
 `;
 
@@ -253,10 +267,16 @@ const User = styled(NavList)`
     align-items: center;
   }
 
+  ul {
+    /* margin-top: 40px; */
+    list-style-type: none;
+  }
+
   &:hover {
     ${SignOut} {
       align-items: center;
       display: flex;
+      /* flex-direction: column; */
       justify-content: center;
     }
   }
@@ -269,7 +289,7 @@ const Work = styled(User)`
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
