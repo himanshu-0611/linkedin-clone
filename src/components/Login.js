@@ -7,14 +7,12 @@ import { Navigate } from "react-router-dom";
 const Login = (props) => {
   return (
     <Container>
-      {props.user && <Navigate to="/home"/>}
+      {props.user && <Navigate to="/home" />}
       <Nav>
-        <a href="/">
-          <img src="/images/login-logo.svg" alt="" />
-        </a>
+        <p>RecSkill.</p>
         <div>
-          <Join>Join now</Join>
-          <SignIn>Sign in</SignIn>
+          {/* <Join>Join now</Join>
+          <SignIn>Sign in</SignIn> */}
         </div>
       </Nav>
       <Section>
@@ -47,12 +45,20 @@ const Nav = styled.nav`
   justify-content: space-between;
   flex-wrap: nowrap;
 
-  & > a {
-    width: 135px;
-    height: 34px;
+  & > p {
     @media (max-width: 768px) {
       padding: 0 5px;
     }
+    width: 204px;
+    height: 60px;
+    background: -webkit-linear-gradient(#33ffab, #aa33ff);
+    background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 48px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
   }
 `;
 
@@ -114,7 +120,10 @@ const Hero = styled.div`
     padding-bottom: 0;
     width: 55%;
     font-size: 56px;
-    color: #2977c9;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#a733ff, #33f5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 200;
     line-height: 70px;
     @media (max-width: 768px) {
@@ -152,22 +161,33 @@ const Form = styled.div`
 const Google = styled.button`
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  /* background-color: #33ccff; */
   align-items: center;
   height: 56px;
   width: 100%;
   border-radius: 28px;
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%),
-    inset 0 0 0 2px rgb(0 0 0 / 0%) inset 0 0 0 1px rgb(0 0 0 / 0);
+  /* box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%),
+    inset 0 0 0 2px rgb(0 0 0 / 0%) inset 0 0 0 1px rgb(0 0 0 / 0); */
 
   vertical-align: middle;
   z-index: 0;
-  transition-duration: 167ms;
+  /* transition-duration: 167ms; */
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.6);
+  /* color: rgba(0, 0, 0, 0.6); */
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px #5a01a7;
+  /* transition: 0.7s; */
+  background-image: linear-gradient(
+    to right,
+    #fbc2eb 0%,
+    #a6c1ee 51%,
+    #fbc2eb 100%
+  );
   &:hover {
-    background-color: rgba(207, 207, 207, 0.25);
-    color: rgba(0, 0, 0, 0.75);
+    /* background-color: rgba(207, 207, 207, 0.25);
+    color: rgba(0, 0, 0, 0.75); */
+    background-position: right center;
   }
 `;
 

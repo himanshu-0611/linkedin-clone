@@ -243,6 +243,7 @@ const SignOut = styled.div`
   position: absolute;
   top: 45px;
   border-radius: 0 0 5px 5px;
+  border: 2px solid black;
   background: white;
   /* width: 150px; */
   /* height: 40px; */
@@ -270,6 +271,10 @@ const User = styled(NavList)`
   ul {
     /* margin-top: 40px; */
     list-style-type: none;
+
+    li {
+      padding: 2px 0 2px 0;
+    }
   }
 
   &:hover {
