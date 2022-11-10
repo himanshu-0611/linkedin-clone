@@ -14,23 +14,20 @@ const Leftside = (props) => {
         <UserInfo>
           <CardBackground />
           <a>
-            <Photo>
-              <img src={props.user.photoURL} />
-            </Photo>
+            <Photo>{/* <img src={propsp.user.photoURL} /> */}</Photo>
             <Link>
               Welcome, {props.user ? props.user.displayName : "there"}{" "}
             </Link>
           </a>
-          <a>
-            {/* <AddPhotoText>Add a photo</AddPhotoText> */}
-          </a>
+          <a>{/* <AddPhotoText>Add a photo</AddPhotoText> */}</a>
         </UserInfo>
         <Widget>
           <a>
             <div>
-              <span>Upload information about your courses or internship
-                completion certificates,
-                achievements.</span>
+              <span>
+                Upload information about your courses or internship completion
+                certificates, achievements.
+              </span>
               <span>Keep a record of your skills</span>
             </div>
             <img src="/images/widget-icon.svg" alt="" />
@@ -67,6 +64,9 @@ const Leftside = (props) => {
 
 const Container = styled.div`
   grid-area: leftside;
+  position: fixed;
+  width: 20%;
+  z-index: 100;
 `;
 
 const ArtCard = styled.div`
@@ -74,7 +74,7 @@ const ArtCard = styled.div`
   overflow: hidden;
   margin-bottom: 8px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: box-shadow 83ms;
   position: relative;
   border: none;

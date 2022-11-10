@@ -48,6 +48,11 @@ const Rightside = (props) => {
 
 const Container = styled.div`
   grid-area: rightside;
+  position: fixed;
+  width:27.6%;
+  left: 1087px;
+  /* z-index: 100; */
+  position: fixed;
 `;
 
 const FollowCard = styled.div`
@@ -55,7 +60,7 @@ const FollowCard = styled.div`
   overflow: hidden;
   margin-bottom: 8px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
   border: none;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);

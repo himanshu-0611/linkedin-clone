@@ -102,7 +102,8 @@ const Main = (props) => {
                     <a>
                       <img src={article.actor.image} alt="" />
                       <div>
-                        <span>{article.actor.title}</span>
+                        <p>{article.actor.title}</p>
+                        {/* <span>{article.actor.title}</span> */}
                         <span>{article.actor.description}</span>
                         {/* <span>{article.actor.createdAt.toDate()}</span> */}
                       </div>
@@ -199,18 +200,19 @@ const CommonCard = styled.div`
   overflow: hidden;
   margin-bottom: 8px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
   border: none;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 15), 0 0 0 rgb(0 0 0 / 20);
+  box-shadow: 0 0 0 0px rgb(0 0 0 / 15), 0 0 0 rgb(0 0 0 / 20);
 `;
 
 const ShareBox = styled(CommonCard)`
   display: flex;
   flex-direction: column;
   color: #958b7b;
-  margin: 0 0 8px;
+  margin: 0 -9px 15px -9px;
   background: white;
+  /* padding-bottom: 10px; */
   div {
     button {
       outline: none;
@@ -265,7 +267,7 @@ const ShareBox = styled(CommonCard)`
 
 const Article = styled(CommonCard)`
   padding: 0;
-  margin: 0 0 8px;
+  margin: 0 -9px 15px -9px;
   overflow: visible;
 `;
 
@@ -287,6 +289,7 @@ const SharedActor = styled.div`
     img {
       width: 48px;
       height: 48px;
+      border-radius: 50%;
     }
 
     & > div {
@@ -297,18 +300,30 @@ const SharedActor = styled.div`
       margin-left: 8 px;
       overflow: hidden;
 
+      p {
+        margin-top: 5px;
+        font-size: 15px;
+        text-align: left;
+        margin-left: 10px;
+        color: rgba(0, 0, 0, 0.6);
+        color: black;
+      }
+
       span {
         text-align: left;
+        margin-left: 10px;
 
         &:first-child {
-          font-size: 14px;
-          font-weight: 700;
+          font-size: 30px;
+          font-weight: 900;
           color: rgba(0, 0, 0, 1);
+          /* color: green; */
         }
 
         &:nth-child(n + 1) {
           font-size: 12px;
-          color: rgba(0, 0, 0, 0.6);
+          color: rgba(0, 0, 0, 0.6); 
+          /* color: green;  */
         }
       }
     }
@@ -347,6 +362,7 @@ const SharedImg = styled.div`
     object-fit: contain;
     width: 100%;
     height: 100%;
+    margin-bottom: 20px;
   }
 `;
 
@@ -406,6 +422,7 @@ const SocialActions = styled.div`
 
 const Content = styled.div`
   text-align: center;
+  /* margin-bottom: 5px; */
 
   & > img {
     width: 30px;

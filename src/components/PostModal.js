@@ -182,7 +182,7 @@ const Content = styled.div`
   max-height: 90%;
   overflow: initial;
   /* border: 5px solid black; */
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
