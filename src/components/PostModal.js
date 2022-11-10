@@ -181,6 +181,7 @@ const Content = styled.div`
   background-color: white;
   max-height: 90%;
   overflow: initial;
+  /* border: 5px solid black; */
   border-radius: 5px;
   position: relative;
   display: flex;

@@ -8,18 +8,16 @@ const Header = (props) => {
     <Container>
       <Content>
         <Logo>
-          <a href="/home">
-            <img src="/images/home-logo.svg" alt="" />
-          </a>
+          {/* <p>RecSkill.</p> */}
         </Logo>
-        <Search>
+        {/* <Search>
           <div>
             <input type="text" placeholder="Search" />
           </div>
           <SearchIcon>
             <img src="/images/search-icon.svg" alt="" />
           </SearchIcon>
-        </Search>
+        </Search> */}
         <Nav>
           <NavListWrap>
             <NavList className="active">
@@ -29,7 +27,7 @@ const Header = (props) => {
               </a>
             </NavList>
 
-            <NavList>
+            {/* <NavList>
               <a>
                 <img src="/images/nav-network.svg" alt="" />
                 <span>My Network</span>
@@ -55,7 +53,7 @@ const Header = (props) => {
                 <img src="/images/nav-notifications.svg" alt="" />
                 <span>Notifications</span>
               </a>
-            </NavList>
+            </NavList> */}
 
             <User>
               <a>
@@ -83,13 +81,13 @@ const Header = (props) => {
             </User>
 
             <Work>
-              <a>
+              {/* <a>
                 <img src="/images/nav-work.svg" alt="" />
                 <span>
                   Work
                   <img src="/images/down-icon.svg" alt="" />
                 </span>
-              </a>
+              </a> */}
             </Work>
           </NavListWrap>
         </Nav>
@@ -119,7 +117,19 @@ const Content = styled.div`
 
 const Logo = styled.span`
   margin-right: 8px;
-  font-size: 0px;
+  font-size: 10px;
+  p {
+    width: 204px;
+    height: 60px;
+    background: -webkit-linear-gradient(#33ffab, #aa33ff);
+    background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 48px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
 `;
 
 const Search = styled.div`

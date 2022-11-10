@@ -124,7 +124,7 @@ const Main = (props) => {
                       )}
                     </a>
                   </SharedImg>
-                  <SocialCounts>
+                  {/* <SocialCounts>
                     <li>
                       <button>
                         <img
@@ -175,7 +175,7 @@ const Main = (props) => {
                       />
                       <span>Send</span>
                     </button>
-                  </SocialActions>
+                  </SocialActions> */}
                 </Article>
               ))}
           </Content>
@@ -191,6 +191,7 @@ const Main = (props) => {
 
 const Container = styled.div`
   grid-area: main;
+  /* border-radius: 2px solid black; */
 `;
 
 const CommonCard = styled.div`

@@ -1,6 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
-import React from "react";
+import ReactPlayer from "react-player";
 import { connect } from "react-redux";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
 
 const Leftside = (props) => {
   return (
@@ -9,20 +14,24 @@ const Leftside = (props) => {
         <UserInfo>
           <CardBackground />
           <a>
-            <Photo />
+            <Photo>
+              <img src={props.user.photoURL} />
+            </Photo>
             <Link>
               Welcome, {props.user ? props.user.displayName : "there"}{" "}
             </Link>
           </a>
           <a>
-            <AddPhotoText>Add a photo</AddPhotoText>
+            {/* <AddPhotoText>Add a photo</AddPhotoText> */}
           </a>
         </UserInfo>
         <Widget>
           <a>
             <div>
-              <span>Connections</span>
-              <span>Grow your network</span>
+              <span>Upload information about your courses or internship
+                completion certificates,
+                achievements.</span>
+              <span>Keep a record of your skills</span>
             </div>
             <img src="/images/widget-icon.svg" alt="" />
           </a>
@@ -80,7 +89,7 @@ const UserInfo = styled.div`
 `;
 
 const CardBackground = styled.div`
-  background: url("/images/card-bg.svg");
+  background: url("https://images.unsplash.com/photo-1579547621309-5e57ab324182?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHB1cnBsZSUyMGN5YW4lMjBiYWNrZ3JvdW5kJTIwY292ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60");
   background-position: center;
   background-size: 462px;
   height: 54px;
@@ -89,7 +98,7 @@ const CardBackground = styled.div`
 
 const Photo = styled.div`
   box-shadow: none;
-  background-image: url("/images/photo.svg");
+  /* background-image: url({props.user.photoURL}); */
   width: 72px;
   height: 72px;
   box-sizing: border-box;
@@ -101,6 +110,11 @@ const Photo = styled.div`
   border: 2px solid white;
   margin: -38px auto 12px;
   border-radius: 50%;
+
+  img {
+    border-radius: 50%;
+    width: 69px;
+  }
 `;
 
 const Link = styled.div`
@@ -216,4 +230,3 @@ const appStateToProps = (state) => {
 };
 
 export default connect(appStateToProps)(Leftside);
-
