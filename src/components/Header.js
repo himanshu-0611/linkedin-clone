@@ -2,14 +2,15 @@ import styled from "styled-components";
 import React from "react";
 import { connect } from "react-redux";
 import { signOutAPI } from "../actions";
+// import { Navigate } from "react-router";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createStackNavigator } from "@react-navigation/stack";
 
 const Header = (props) => {
   return (
     <Container>
       <Content>
-        <Logo>
-          {/* <p>RecSkill.</p> */}
-        </Logo>
+        <Logo>{/* <p>RecSkill.</p> */}</Logo>
         {/* <Search>
           <div>
             <input type="text" placeholder="Search" />
@@ -72,10 +73,19 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut >
+              <SignOut>
                 <ul>
-                  <li><a>Profile</a></li>
-                  <li><a onClick={() => props.signOut()}>Sign Out</a></li>
+                  {/* <li><a onClick={(props) => <Navigate to="/Profile" />}>Profile</a></li> */}
+                  {/* <Button
+                    title="First"
+                    onPress={(props) => navigation.navigate("/Profile", props)}
+                  /> */}
+                  <li>
+                    <a>Profile</a>
+                  </li>
+                  <li>
+                    <a onClick={() => props.signOut()}>Sign Out</a>
+                  </li>
                 </ul>
               </SignOut>
             </User>
@@ -296,6 +306,9 @@ const User = styled(NavList)`
     }
   }
 `;
+// localStorage.setItem("props", props);
+// const userDet = localStorage.getItem("props");
+// const Button = styled.div``;
 
 const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);

@@ -96,36 +96,38 @@ const Main = (props) => {
               <img src="https://cdn-icons-png.flaticon.com/512/889/889843.png" />
             )}
             {props.articles.length > 0 &&
-              props.articles.map((article, key) => (
-                <Article key={key}>
-                  <SharedActor>
-                    <a>
-                      <img src={article.actor.image} alt="" />
-                      <div>
-                        <p>{article.actor.title}</p>
-                        {/* <span>{article.actor.title}</span> */}
-                        <span>{article.actor.description}</span>
-                        {/* <span>{article.actor.createdAt.toDate()}</span> */}
-                      </div>
-                    </a>
-                    <button>
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/2311/2311523.png"
-                        alt=""
-                      />
-                    </button>
-                  </SharedActor>
-                  <Description>{article.description}</Description>
-                  <SharedImg>
-                    <a>
-                      {!article.sharedImg && article.video ? (
-                        <ReactPlayer width={"100%"} url={article.video} />
-                      ) : (
-                        article.sharedImg && <img src={article.sharedImg} />
-                      )}
-                    </a>
-                  </SharedImg>
-                  {/* <SocialCounts>
+              // props.articles.title === props.user.displayName &&
+              props.articles.map((article, key) =>
+                article.actor.title === props.user.displayName ? (
+                  <Article key={key}>
+                    <SharedActor>
+                      <a>
+                        <img src={article.actor.image} alt="" />
+                        <div>
+                          <p>{article.actor.title}</p>
+                          {/* <span>{article.actor.title}</span> */}
+                          <span>{article.actor.description}</span>
+                          {/* <span>{article.actor.createdAt.toDate()}</span> */}
+                        </div>
+                      </a>
+                      <button>
+                        <img
+                          src="https://cdn-icons-png.flaticon.com/512/2311/2311523.png"
+                          alt=""
+                        />
+                      </button>
+                    </SharedActor>
+                    <Description>{article.description}</Description>
+                    <SharedImg>
+                      <a>
+                        {!article.sharedImg && article.video ? (
+                          <ReactPlayer width={"100%"} url={article.video} />
+                        ) : (
+                          article.sharedImg && <img src={article.sharedImg} />
+                        )}
+                      </a>
+                    </SharedImg>
+                    {/* <SocialCounts>
                     <li>
                       <button>
                         <img
@@ -177,8 +179,9 @@ const Main = (props) => {
                       <span>Send</span>
                     </button>
                   </SocialActions> */}
-                </Article>
-              ))}
+                  </Article>
+                ) : null
+              )}
           </Content>
           <PostModal
             showModal={showModal}
@@ -322,7 +325,7 @@ const SharedActor = styled.div`
 
         &:nth-child(n + 1) {
           font-size: 12px;
-          color: rgba(0, 0, 0, 0.6); 
+          color: rgba(0, 0, 0, 0.6);
           /* color: green;  */
         }
       }

@@ -54,6 +54,19 @@ export function signOutAPI() {
   };
 }
 
+// export function profile() {
+//   return (dispatch) => {
+//     auth
+//       .signOut()
+//       .then(() => {
+//         dispatch(setUser(null));
+//       })
+//       .catch((error) => {
+//         console.log(error.message);
+//       });
+//   };
+// }
+
 export function postArticleAPI(payload) {
   return (dispatch) => {
     dispatch(setLoading(true));
