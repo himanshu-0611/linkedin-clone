@@ -37,12 +37,14 @@ const Header = (props) => {
               {/* <a href="/Home"> */}
               <a>
                 {/* <HomeIcon> */}
-                <img src="/images/nav-home.svg" alt="" />
-                {/* </HomeIcon> */}
-                {/* <img src="/images/nav-home.svg" alt=""/> */}
-                <HomeEdit>
-                  <Link to="/Home">Home</Link>
-                </HomeEdit>
+                <HomeArea>
+                  <img src="/images/nav-home.svg" alt="" />
+                  {/* </HomeIcon> */}
+                  {/* <img src="/images/nav-home.svg" alt=""/> */}
+                  <HomeEdit>
+                    <Link to="/Home">Home</Link>
+                  </HomeEdit>
+                </HomeArea>
                 {/* Home */}
               </a>
             </NavList>
@@ -136,6 +138,7 @@ const Container = styled.div`
   padding: 0 24px;
   position: fixed;
   top: 0;
+  z-index: 999;
   width: 100vw;
   height: 50px;
   z-index: 100;
@@ -155,9 +158,13 @@ const Container = styled.div`
     margin-top: -4px;
 
     @media (max-width: 768px) {
-      margin-left: 169px;
-      align-content: center;
-      margin-top: -7px;
+      /* margin-left: 169px; */
+      /* align-content: center;
+      margin-top: 0px;
+      font-size: 30px; */
+      margin-top: 4px;
+      font-size: 30px;
+      margin-left: -5px;
     }
   }
 `;
@@ -176,73 +183,12 @@ const LogoPhoto = styled.div`
     width: 40px;
     /* margin-top: 5px; */
     margin-right: 10px;
-    @media (max-width: 768px){
-      margin-left: -20px;
+    @media (max-width: 768px) {
+      /* margin-left: -20px; */
+      margin-left: -1px;
+      margin-top: -6px;
     }
   }
-`;
-
-// const Logo = styled.span`
-//   margin-right: 8px;
-//   font-size: 10px;
-//   margin-top: 10px;
-//   p {
-//     width: 204px;
-//     height: 60px;
-//     background: -webkit-linear-gradient(#33ffab, #aa33ff);
-//     background-clip: border-box;
-//     background-clip: border-box;
-//     -webkit-background-clip: text;
-//     -webkit-text-fill-color: transparent;
-//     font-size: 38px;
-//     font-family: "Poppins", sans-serif;
-//     font-weight: 600;
-//     margin-top: -20px;
-
-//     @media (max-width: 768px) {
-//       margin-left: 169px;
-//       align-content: center;
-//       margin-top: -7px;
-//     }
-//   }
-// `;
-
-const Search = styled.div`
-  opacity: 1;
-  flex-grow: 1;
-  position: relative;
-  & > div {
-    max-width: 280px;
-    input {
-      border: none;
-      box-shadow: none;
-      background-color: #eef3f8;
-      border-radius: 2px;
-      color: rgba(0, 0, 0, 0.9);
-      width: 218px;
-      padding: 0 8px 0 40px;
-      line-height: 1.75;
-      font-weight: 400;
-      font-size: 14px;
-      height: 34px;
-      border-color: #dce6f1;
-      vertical-align: text-top;
-    }
-  }
-`;
-
-const SearchIcon = styled.div`
-  width: 40px;
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  left: 2px;
-  border-radius: 0 2px 2px 0;
-  margin: 0;
-  pointer-events: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Nav = styled.nav`
@@ -250,10 +196,10 @@ const Nav = styled.nav`
   display: block;
   @media (max-width: 768px) {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    /* left: 0;
+    bottom: 0; */
     background: white;
-    width: 100%;
+    width: 0%;
   }
 `;
 
@@ -311,7 +257,10 @@ const NavList = styled.li`
     }
 
     @media (max-width: 768px) {
-      min-width: 70px;
+      /* min-width: 70px; */
+      min-width: 88px;
+      margin-top: -6px;
+      margin-left: -30px;
     }
   }
 
@@ -320,22 +269,13 @@ const NavList = styled.li`
     a {
       span {
         color: rgba(0, 0, 0, 1);
-        background-color: rgba(0, 0, 0, 0.08);
+        /* background-color: rgba(0, 0, 0, 0.08); */
       }
     }
   }
 `;
 
 const SignOut = styled.div`
-  /* position: absolute;
-  top: 45px;
-  background: white;
-  border-radius: 0 0 5px 5px;
-  width: 100px;
-  height: 40px;
-  font-size: 16px;
-  transition-duration: 167ms;
-  text-align: center; */
   position: absolute;
   top: 51px;
   border-radius: 0 0 5px 5px;
@@ -352,7 +292,17 @@ const SignOut = styled.div`
   }
 
   @media (max-width: 768px) {
-    margin-top: -90px;
+    /* margin-top: -90px; */
+    margin-top: -15px;
+
+    a {
+      margin-left: -10px;
+      margin-top: 2px;
+    }
+    /* margin-top: 0.1px; */
+    margin-left: -24px;
+    height: 50px;
+    width: 70px;
   }
 `;
 
@@ -401,9 +351,27 @@ const User = styled(NavList)`
   }
 `;
 
+const HomeArea = styled.div`
+  img {
+    margin-left: 28px;
+
+    @media (max-width: 768px) {
+      margin-left: 88px;
+    }
+  }
+`;
+
 const HomeEdit = styled.div`
+  margin-top: -5px;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    /* background-color: rgba(0, 0, 0, 0.08); */
+  }
+  @media (max-width: 768px) {
+    margin-left: -4px;
+
+    a {
+      margin-left: 59px;
+    }
   }
 `;
 // localStorage.setItem("props", props);
@@ -429,6 +397,69 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+// const Logo = styled.span`
+//   margin-right: 8px;
+//   font-size: 10px;
+//   margin-top: 10px;
+//   p {
+//     width: 204px;
+//     height: 60px;
+//     background: -webkit-linear-gradient(#33ffab, #aa33ff);
+//     background-clip: border-box;
+//     background-clip: border-box;
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     font-size: 38px;
+//     font-family: "Poppins", sans-serif;
+//     font-weight: 600;
+//     margin-top: -20px;
+
+//     @media (max-width: 768px) {
+//       margin-left: 169px;
+//       align-content: center;
+//       margin-top: -7px;
+//     }
+//   }
+// `;
+
+// const Search = styled.div`
+//   opacity: 1;
+//   flex-grow: 1;
+//   position: relative;
+//   & > div {
+//     max-width: 280px;
+//     input {
+//       border: none;
+//       box-shadow: none;
+//       background-color: #eef3f8;
+//       border-radius: 2px;
+//       color: rgba(0, 0, 0, 0.9);
+//       width: 218px;
+//       padding: 0 8px 0 40px;
+//       line-height: 1.75;
+//       font-weight: 400;
+//       font-size: 14px;
+//       height: 34px;
+//       border-color: #dce6f1;
+//       vertical-align: text-top;
+//     }
+//   }
+// `;
+
+// const SearchIcon = styled.div`
+//   width: 40px;
+//   position: absolute;
+//   z-index: 1;
+//   top: 10px;
+//   left: 2px;
+//   border-radius: 0 2px 2px 0;
+//   margin: 0;
+//   pointer-events: none;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
 // import styled from "styled-components";
 // import React from "react";

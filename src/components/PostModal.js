@@ -111,7 +111,7 @@ const PostModal = (props) => {
                     <>
                       <input
                         type="text"
-                        placeholder="Place input a video link"
+                        placeholder="Paste a video link (YouTube, Google Drive, etc.)"
                         video={videoLink}
                         onChange={(e) => setVideoLink(e.target.value)}
                       />
@@ -170,11 +170,15 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   /* background: -webkit-linear-gradient(#e3f9fc,#ffffff); */
-  z-index: 999;
+  z-index: 99;
   color: black;
   background-color: rgba(0, 0, 0, 0.8);
   /* background: -webkit-linear-gradient(#e3f9fc, #ffffff); */
   animation: fadeIn 0.3s;
+
+  @media (max-width: 768px) {
+    margin-top: 50px 5px 0 5px;
+  }
 `;
 
 const Content = styled.div`
@@ -260,9 +264,16 @@ const AssetButton = styled.button`
   height: 40px;
   min-width: auto;
   color: rgba(0, 0, 0, 0.5);
-
+  margin-left: 8px;
+  /* border: none; */
+  background: -webkit-linear-gradient(#33ffab, #aa33ff);
+  border-radius: 10px;
   img {
     width: 25px;
+  }
+
+  span {
+    color: black;
   }
 `;
 
@@ -295,8 +306,9 @@ const PostButton = styled.button`
   padding-right: 16px;
   /* background: ${(props) => (props.disabled ? "rgba(0,0,0,0.8)" : "purple")};
   color: ${(props) => (props.disabled ? "rgba(1,1,1,0.2" : "white")}; */
-  background: purple;
-  color: white;
+  /* background: purple; */
+  background: -webkit-linear-gradient(#33ffab, #aa33ff);
+  color: black;
   &:hover {
     /* background: ${(props) =>
       props.disabled ? "rgba(0,0,0,0.08)" : "cyan"} */

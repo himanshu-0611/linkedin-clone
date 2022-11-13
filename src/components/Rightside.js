@@ -53,6 +53,10 @@ const Container = styled.div`
   left: 1087px;
   /* z-index: 100; */
   position: fixed;
+
+  @media (max-width: 768px) {
+    z-index: 100;
+  }
 `;
 
 const FollowCard = styled.div`

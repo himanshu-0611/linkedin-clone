@@ -204,7 +204,7 @@ const Profile = (props) => {
           <Rightside />
         </RightsideMargin>
       </Layout>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </>
   );
 };
@@ -215,7 +215,7 @@ const Container = styled.div`
   /* border-radius: 2px solid black; */
 
   @media (max-width: 768px) {
-    margin-top: 420px;
+    margin-top: 380px;
   }
 `;
 
@@ -291,11 +291,15 @@ const ShareBox = styled(CommonCard)`
 
 const Article = styled(CommonCard)`
   padding: 0;
-  margin: 0 -9px 15px -9px;
+  margin: 0px -9px 15px -9px;
   overflow: visible;
   /* border-radius: 50px; */
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+
+  @media (max-width: 768px) {
+    margin: -5px -9px 30px -9px;
+  }
 `;
 
 const SharedActor = styled.div`
@@ -391,6 +395,8 @@ const SharedImg = styled.div`
     width: 100%;
     height: 100%;
     margin-bottom: 20px;
+
+    border: 0.5px solid gray;
   }
 `;
 
@@ -465,7 +471,6 @@ const mapStateToPops = (state) => {
     user: state.userState.user,
   };
 };
-
 
 const Layout = styled.div`
   display: grid;

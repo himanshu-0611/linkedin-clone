@@ -39,97 +39,101 @@ const Main = (props) => {
       {props.articles.length === 0 ? (
         <p>There are no articles</p>
       ) : (
-        <Container>
-          <ShareBox>
-            <div>
-              {props.user && props.user.photoURL ? (
-                <img
-                  src={props.user.photoURL}
-                  alt=""
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <img src="/images/user.svg" alt="" />
+        <>
+          <Container>
+            <ShareBox>
+              <div>
+                {props.user && props.user.photoURL ? (
+                  <img
+                    src={props.user.photoURL}
+                    alt=""
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <img src="/images/user.svg" alt="" />
+                )}
+                <button
+                  onClick={handleClick}
+                  disabled={props.loading ? true : false}
+                >
+                  Start a Post
+                </button>
+              </div>
+              <div>
+                <button>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1375/1375106.png"
+                    alt=""
+                  />
+                  <span>Photo</span>
+                </button>
+
+                <button>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/3074/3074767.png"
+                    alt=""
+                  />
+                  <span>Video</span>
+                </button>
+
+                <button>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/3277/3277431.png"
+                    alt=""
+                  />
+                  <span>Event</span>
+                </button>
+
+                <button>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/6612/6612250.png"
+                    alt=""
+                  />
+                  <span>Article</span>
+                </button>
+              </div>
+            </ShareBox>
+            <Content>
+              {props.loading && (
+                <img src="https://cdn-icons-png.flaticon.com/512/889/889843.png" />
               )}
-              <button
-                onClick={handleClick}
-                disabled={props.loading ? true : false}
-              >
-                Start a Post
-              </button>
-            </div>
-            <div>
-              <button>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/1375/1375106.png"
-                  alt=""
-                />
-                <span>Photo</span>
-              </button>
-
-              <button>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/3074/3074767.png"
-                  alt=""
-                />
-                <span>Video</span>
-              </button>
-
-              <button>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/3277/3277431.png"
-                  alt=""
-                />
-                <span>Event</span>
-              </button>
-
-              <button>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/6612/6612250.png"
-                  alt=""
-                />
-                <span>Article</span>
-              </button>
-            </div>
-          </ShareBox>
-          <Content>
-            {props.loading && (
-              <img src="https://cdn-icons-png.flaticon.com/512/889/889843.png" />
-            )}
-            {props.articles.length > 0 &&
-              // props.articles.title === props.user.displayName &&
-              props.articles.map(
-                (article, key) => (
-                  // article.actor.title === props.user.displayName ? (
-                  <Article key={key}>
-                    <SharedActor>
-                      <a>
-                        <img src={article.actor.image} alt="" />
-                        <div>
-                          <p>{article.actor.title}</p>
-                          {/* <span>{article.actor.title}</span> */}
-                          <span>{article.actor.description}</span>
-                          {/* <span>{article.actor.createdAt.toDate()}</span> */}
-                        </div>
-                      </a>
-                      <button>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/2311/2311523.png"
-                          alt=""
-                        />
-                      </button>
-                    </SharedActor>
-                    <Description>{article.description}</Description>
-                    <SharedImg>
-                      <a>
-                        {!article.sharedImg && article.video ? (
-                          <ReactPlayer width={"100%"} url={article.video} />
-                        ) : (
-                          article.sharedImg && <img src={article.sharedImg} />
-                        )}
-                      </a>
-                    </SharedImg>
-                    {/* <SocialCounts>
+              {props.articles.length > 0 &&
+                // props.articles.title === props.user.displayName &&
+                props.articles.map(
+                  (article, key) => (
+                    // article.actor.title === props.user.displayName ? (
+                    <Article key={key}>
+                      <SharedActor>
+                        <a>
+                          <img src={article.actor.image} alt="" />
+                          <div>
+                            <p>{article.actor.title}</p>
+                            {/* <span>{article.actor.title}</span> */}
+                            <span>{article.actor.description}</span>
+                            {/* <span>{article.actor.createdAt.toDate()}</span> */}
+                            <span>
+                              {article.actor.date.toDate().toLocaleDateString()}
+                            </span>
+                          </div>
+                        </a>
+                        <button>
+                          <img
+                            src="https://cdn-icons-png.flaticon.com/512/2311/2311523.png"
+                            alt=""
+                          />
+                        </button>
+                      </SharedActor>
+                      <Description>{article.description}</Description>
+                      <SharedImg>
+                        <a>
+                          {!article.sharedImg && article.video ? (
+                            <ReactPlayer width={"100%"} url={article.video} />
+                          ) : (
+                            article.sharedImg && <img src={article.sharedImg} />
+                          )}
+                        </a>
+                      </SharedImg>
+                      {/* <SocialCounts>
                     <li>
                       <button>
                         <img
@@ -181,17 +185,18 @@ const Main = (props) => {
                       <span>Send</span>
                     </button>
                   </SocialActions> */}
-                  </Article>
-                )
-                // ) : null
-              )}
-          </Content>
-          <PostModal
-            showModal={showModal}
-            handleClick={handleClick}
-          ></PostModal>
-        <Footer></Footer>
-        </Container>
+                    </Article>
+                  )
+                  // ) : null
+                )}
+            </Content>
+            <PostModal
+              showModal={showModal}
+              handleClick={handleClick}
+            ></PostModal>
+          </Container>
+          <Footer></Footer>
+        </>
       )}
     </>
   );
@@ -203,7 +208,7 @@ const Container = styled.div`
   /* border-radius: 2px solid black; */
 
   @media (max-width: 768px) {
-    margin-top: 420px;
+    margin-top: 380px;
   }
 `;
 
@@ -217,6 +222,10 @@ const CommonCard = styled.div`
   position: relative;
   border: none;
   box-shadow: 0 0 0 0px rgb(0 0 0 / 15), 0 0 0 rgb(0 0 0 / 20);
+
+  /* @media (min-width: 768px) {
+    margin-top: -190px;
+  } */
   /* border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; */
 `;
@@ -226,7 +235,7 @@ const ShareBox = styled(CommonCard)`
   flex-direction: column;
   color: #958b7b;
   margin: 0 -9px 15px -9px;
-  background: -webkit-linear-gradient(#e3f9fc,#ffffff);
+  background: -webkit-linear-gradient(#e3f9fc, #ffffff);
   /* padding-bottom: 10px; */
   div {
     button {
@@ -284,6 +293,10 @@ const Article = styled(CommonCard)`
   padding: 0;
   margin: 0 -9px 15px -9px;
   overflow: visible;
+
+  @media (max-width: 768px) {
+    margin: -5px -9px 30px -9px;
+  }
 `;
 
 const SharedActor = styled.div`
@@ -305,6 +318,7 @@ const SharedActor = styled.div`
       width: 48px;
       height: 48px;
       border-radius: 50%;
+      /* border: 1px solid gray; */
     }
 
     & > div {
@@ -316,7 +330,7 @@ const SharedActor = styled.div`
       overflow: hidden;
 
       p {
-        margin-top: 5px;
+        margin-top: -6px;
         font-size: 15px;
         text-align: left;
         margin-left: 10px;
@@ -378,6 +392,7 @@ const SharedImg = styled.div`
     width: 100%;
     height: 100%;
     margin-bottom: 20px;
+    border: 0.5px solid gray;
   }
 `;
 

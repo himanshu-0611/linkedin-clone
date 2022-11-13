@@ -168,7 +168,7 @@ const Hero = styled.div`
       position: initial;
       height: initial;
       width: 379px;
-      height: auto;
+      height: 379px;
       padding: 0;
     }
   }

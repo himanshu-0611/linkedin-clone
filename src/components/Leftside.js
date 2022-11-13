@@ -67,12 +67,13 @@ const Container = styled.div`
   grid-area: leftside;
   position: fixed;
   width: 20%;
-  z-index: 100;
+  /* z-index: 200; */
   @media (max-width: 768px){
     width:98%;
     position: absolute;
     margin-left: -10px;
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-bottom: -100px;
   }
 `;
 
