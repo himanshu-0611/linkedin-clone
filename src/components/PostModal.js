@@ -169,13 +169,16 @@ const Container = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
+  /* background: -webkit-linear-gradient(#e3f9fc,#ffffff); */
+  z-index: 999;
   color: black;
   background-color: rgba(0, 0, 0, 0.8);
+  /* background: -webkit-linear-gradient(#e3f9fc, #ffffff); */
   animation: fadeIn 0.3s;
 `;
 
 const Content = styled.div`
+  /* background: -webkit-linear-gradient(#e3f9fc,#ffffff); */
   width: 100%;
   max-width: 552px;
   background-color: white;

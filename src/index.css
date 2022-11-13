@@ -1,6 +1,7 @@
 body {
   overflow-y: scroll;
   overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
 :root,
@@ -8,6 +9,7 @@ body,
 html {
   background-color: black;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 div,
@@ -35,10 +37,11 @@ ul {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @-webkit-keyframes fadeIn {

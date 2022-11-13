@@ -7,24 +7,35 @@ import Header from "./Header";
 import { Navigate } from "react-router";
 import { connect } from "react-redux";
 
-
 const Home = (props) => {
   return (
-    <><Header />
-    <Container>
-    {!props.user && <Navigate to="/" />}
-      <Layout>
-        <Leftside />
-        <Main />
-        <Rightside />
-      </Layout>
-    </Container></>
+    <>
+      <Header />
+      {/* <Ruler>
+        <hr></hr>
+      </Ruler> */}
+      <Container>
+        {!props.user && <Navigate to="/" />}
+        <Layout>
+          <Leftside />
+          <Main />
+          <Rightside />
+        </Layout>
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div`
   padding-top: 52px;
   max-width: 100%;
+`;
+
+const Ruler = styled.div`
+  hr {
+    color: white;
+    z-index: 9999;
+  }
 `;
 
 const Content = styled.div`
@@ -79,7 +90,7 @@ const Layout = styled.div`
 const mapStateToPorps = (state) => {
   return {
     user: state.userState.user,
-  }
-}
+  };
+};
 
 export default connect(mapStateToPorps)(Home);
