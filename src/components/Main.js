@@ -36,10 +36,6 @@ const Main = (props) => {
 
   return (
     <>
-      {props.articles.length === 0 ? (
-        <p>There are no articles</p>
-      ) : (
-        <>
           <Container>
             <ShareBox>
               <div>
@@ -195,9 +191,7 @@ const Main = (props) => {
               handleClick={handleClick}
             ></PostModal>
           </Container>
-          <Footer></Footer>
-        </>
-      )}
+          <Footer></Footer>     
     </>
   );
 };
@@ -296,6 +290,13 @@ const Article = styled(CommonCard)`
 
   @media (max-width: 768px) {
     margin: -5px -9px 30px -9px;
+  }
+`;
+
+const NoArt = styled.div`
+  p {
+
+    color: white;
   }
 `;
 

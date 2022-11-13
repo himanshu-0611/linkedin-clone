@@ -45,6 +45,7 @@ const LastLine = styled.div`
     margin-left: 730px;
     color: white;
     font-size: 12px;
+    padding: 2px;
 
     a {
       text-decoration: none;
@@ -69,7 +70,7 @@ const LastLine = styled.div`
     color: white;
     padding-bottom: 20px;
     height: 30px;
-    margin-left: 330px;
+    margin-left: 306px;
     /* margin-left: 329px; */
     width: 89vw;
     /* margin-top: -300px; */

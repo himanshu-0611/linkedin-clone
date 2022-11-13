@@ -176,8 +176,14 @@ const Container = styled.div`
   /* background: -webkit-linear-gradient(#e3f9fc, #ffffff); */
   animation: fadeIn 0.3s;
 
+  /* @media (max-width: 768px) {
+    margin-top: 50px 5px 0 5px;
+    
+  } */
   @media (max-width: 768px) {
     margin-top: 50px 5px 0 5px;
+    margin-top: 50px;
+    width: 100%;
   }
 `;
 

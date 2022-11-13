@@ -6,13 +6,18 @@ import "firebase/compat/storage";
 // import firebase from "firebase";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAblCeo1q-rlaZuW4UyogZ_jpHidqKj7c4",
-    authDomain: "linkedin-clone-fc6f6.firebaseapp.com",
-    projectId: "linkedin-clone-fc6f6",
-    storageBucket: "linkedin-clone-fc6f6.appspot.com",
-    messagingSenderId: "846195710855",
-    appId: "1:846195710855:web:85a5e226077fa3689e9122"
-  };
+  apiKey: "AIzaSyBJ2uCkyIM3tb4zvoJ0_YPXOEg0xxEF6ak",
+
+  authDomain: "recskill-d02fe.firebaseapp.com",
+
+  projectId: "recskill-d02fe",
+
+  storageBucket: "recskill-d02fe.appspot.com",
+
+  messagingSenderId: "740552029923",
+
+  appId: "1:740552029923:web:e3594a8b099f46d63837d6",
+};
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
