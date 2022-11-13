@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getArticlesAPI } from "../actions";
 import styled from "styled-components";
 import React from "react";
+import Footer from "./Footer";
 import Header from "./Header";
 import Rightside from "./Rightside";
 import Leftside from "./Leftside";
@@ -203,6 +204,7 @@ const Profile = (props) => {
           <Rightside />
         </RightsideMargin>
       </Layout>
+      {/* <Footer></Footer> */}
     </>
   );
 };
@@ -449,7 +451,7 @@ const SocialActions = styled.div`
 const Content = styled.div`
   text-align: center;
   /* border-radius-bottom: 15px; */
-  margin-bottom: 50px;
+  margin-bottom: 14px;
 
   & > img {
     width: 30px;

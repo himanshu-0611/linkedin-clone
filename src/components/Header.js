@@ -176,6 +176,9 @@ const LogoPhoto = styled.div`
     width: 40px;
     /* margin-top: 5px; */
     margin-right: 10px;
+    @media (max-width: 768px){
+      margin-left: -20px;
+    }
   }
 `;
 

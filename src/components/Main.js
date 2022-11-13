@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getArticlesAPI } from "../actions";
 import styled from "styled-components";
 import React from "react";
+import Footer from "./Footer";
 import PostModal from "./PostModal";
 import { connect } from "react-redux";
 import ReactPlayer from "react-player";
@@ -189,6 +190,7 @@ const Main = (props) => {
             showModal={showModal}
             handleClick={handleClick}
           ></PostModal>
+        <Footer></Footer>
         </Container>
       )}
     </>

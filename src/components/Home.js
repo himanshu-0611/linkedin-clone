@@ -4,6 +4,7 @@ import Main from "./Main";
 import Rightside from "./Rightside";
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import { Navigate } from "react-router";
 import { connect } from "react-redux";
 
